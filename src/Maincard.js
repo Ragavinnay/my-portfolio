@@ -1,90 +1,46 @@
-import React, { useEffect, useRef } from 'react';
-import imgFluid from './imgg.png';
-import './App.css';
+import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import './App.css';
 
-export default function MainApp() {
-  const leftRef = useRef();
-  const midRef = useRef();
-  const rightRef = useRef();
+const profiles = {
+  software: {
+    label: 'Software & AI/ML profile',
+    role: 'Software engineering · applied AI/ML',
+    intro: 'Building thoughtful software and intelligent systems at the intersection of practical engineering, data, and automation.',
+    aside: 'Software-minded.\nCurious by design.',
+  },
+  core: {
+    label: 'Core ECE profile',
+    role: 'Embedded systems · electronics engineering',
+    intro: 'Designing connected hardware through microcontrollers, sensors, firmware, simulation, and disciplined experimentation.',
+    aside: 'Hardware-minded.\nCurious by design.',
+  },
+};
 
-  useEffect(() => {
-    setTimeout(() => {
-      leftRef.current?.classList.add('visible');
-      midRef.current?.classList.add('visible');
-      rightRef.current?.classList.add('visible');
-    }, 100);
-  }, []);
+export default function MainApp({ profile, onProfileChange }) {
+  const current = profiles[profile];
 
   return (
     <Container fluid className="main-hero-container">
-      <Row className="h-100 g-0">
-        {/* Left: Background Image with Text */}
-        <Col md={4} className="bg-section fade-in" ref={leftRef}>
-          <div className="bg-overlay-content">
-            <p className="greeting-text mb-3">Hello, I am</p>
-            <h1 className="main-name display-3 fw-bold mb-3">
-              <span className="name-gradient">Raga Vinay</span>
-            </h1>
-            <h2 className="role-text fs-4 mb-4">
-              <span className="role-badge">IoT & Firmware Developer</span>
-            </h2>
-            <div className="tech-stack mt-4">
-              <span className="tech-tag">Embedded Systems</span>
-              <span className="tech-tag">IoT</span>
-              <span className="tech-tag">Python</span>
-              <span className="tech-tag">C++</span>
-            </div>
-            <div className="hero-actions mt-4">
-              <a
-                href="/pdfs/resume.pdf"
-                download
-                className="resume-btn"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="7 10 12 15 17 10"/>
-                  <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Download Resume
-              </a>
-            </div>
+      <Row className="hero-grid g-0">
+        <Col lg={7} className="hero-copy">
+          <p className="hero-kicker">Raga Vinay Dewarasetty · Bengaluru</p>
+          <div className="profile-switcher" role="tablist" aria-label="Portfolio profile">
+            {Object.entries(profiles).map(([key, value]) => (
+              <button key={key} type="button" role="tab" aria-selected={profile === key} className={profile === key ? 'active' : ''} onClick={() => onProfileChange(key)}>{value.label}</button>
+            ))}
           </div>
-          <div className="bg-overlay"></div>
+          <h1 className="main-name">Raga Vinay<br /><em>Dewarasetty</em></h1>
+          <p className="role-text">{current.role}</p>
+          <p className="hero-intro">{current.intro}</p>
+          <div className="hero-actions"><a href="#projects" className="hero-primary">View selected work <span>↗</span></a><a href="/pdfs/resume.pdf" download className="resume-btn">Download resume <span>↓</span></a></div>
+          <div className="hero-meta"><span>01 / Profile</span><span>B.Tech ECE · Minor in AI/ML</span></div>
         </Col>
-        
-        {/* Middle: Profile Image */}
-        <Col
-          md={4}
-          className="d-flex align-items-center justify-content-center profile-image-col fade-in"
-          ref={midRef}
-        >
-          <div className="profile-image-wrapper">
-            <div className="profile-image-glow"></div>
-            <img src={imgFluid} alt="Raga Vinay" className="profile-pic" />
-          </div>
-        </Col>
-        
-        {/* Right: About Section */}
-        <Col
-          md={4}
-          className="d-flex flex-column justify-content-center about-section fade-in"
-          ref={rightRef}
-        >
-          <div className="about-content">
-            <h2 className="about-title mb-4">
-              <span className="title-icon">👋</span> About Me
-            </h2>
-            <p className="about-text">
-              I'm <strong>Raga Vinay Dewarsetty</strong>, an Electronics and Communication Engineering student with a passion for Embedded Systems, IoT, and intelligent automation. 
-            </p>
-            <p className="about-text">
-              I specialize in firmware development, real-time systems, and integrating hardware with software to create efficient, scalable solutions. With experience in Python, C++, and machine learning, I enjoy solving real-world problems through innovative system design.
-            </p>
-            <p className="about-text">
-              I'm driven by curiosity and always eager to learn and build impactful technology.
-            </p>
-          </div>
+        <Col lg={5} className="hero-aside">
+          <div className="hero-aside-top"><span>Portfolio / 2026</span><span>RVDS</span></div>
+          <div className="monogram">RV<span>.</span></div>
+          <p className="hero-aside-copy">{current.aside.split('\n').map((line) => <React.Fragment key={line}>{line}<br /></React.Fragment>)}</p>
+          <div className="hero-aside-bottom"><span>Profile / {profile === 'software' ? '02' : '01'}</span><span>Open to opportunities</span></div>
         </Col>
       </Row>
     </Container>

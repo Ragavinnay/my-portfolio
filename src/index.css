@@ -1,45 +1,30 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #2d3748;
-  line-height: 1.6;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-}
+:root { --ink:#202522; --muted:#69736c; --paper:#f5f6f2; --surface:#ffffff; --line:#d8ddd7; --accent:#a8d65e; --accent-ink:#172016; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; background:var(--paper); }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:inherit; } button,input,textarea { font:inherit; } ::selection { background:var(--accent); color:var(--accent-ink); }
+.app-container { overflow-x:hidden; background:var(--paper); }
+.main-section,.projects-section,.skills-section,.certifications-section,.contact-section { position:relative; }
+.projects-section,.certifications-section { background:var(--surface); }
+.skills-section,.contact-section { background:var(--paper); }
+.projects-section,.skills-section,.certifications-section,.contact-section { padding:clamp(76px,10vw,144px) 0; }
+.projects-container,.skills-container,.certifications-container,.contact-container { max-width:1120px; }
+.section-heading { margin-bottom:56px; max-width:660px; }
+.section-eyebrow { color:var(--muted); font:500 .7rem/1.2 'DM Mono',monospace; letter-spacing:.1em; text-transform:uppercase; margin-bottom:22px; }
+.projects-title,.skills-title,.certifications-title,.contact-title { color:var(--ink); font-size:clamp(2.6rem,5vw,5.4rem); font-weight:800; letter-spacing:-.085em; line-height:.95; margin:0; }
+.projects-title em,.skills-title em,.certifications-title em { color:#809c52; font-style:normal; }
+.projects-subtitle,.skills-subtitle,.contact-subtitle { color:var(--muted); font-size:1rem; line-height:1.75; margin:28px 0 0; max-width:560px; }
+.title-underline { background:var(--accent); height:3px; margin:25px auto 0; width:48px; }
+.project-card,.skill-category-card,.contact-card { background:var(--surface)!important; border:1px solid var(--line)!important; border-radius:0!important; box-shadow:none!important; color:var(--ink)!important; transition:transform .25s ease,border-color .25s ease; }
+.project-card:hover,.skill-category-card:hover { border-color:#9dbb71!important; transform:translateY(-5px); }
+.project-card-title,.category-title { color:var(--ink)!important; } .project-card-subtitle,.project-description,.skill-name,.about-text { color:var(--muted)!important; }
+.tech-badge,.tech-tag { background:transparent!important; border:1px solid var(--line)!important; border-radius:0!important; color:var(--muted)!important; }
+.project-btn,.contact-btn { background:var(--ink)!important; border:0!important; border-radius:0!important; color:var(--paper)!important; font-weight:700!important; }
+.project-btn:hover,.contact-btn:hover { background:#536052!important; }
+.form-control-custom { background:var(--surface)!important; border:1px solid var(--line)!important; border-radius:0!important; color:var(--ink)!important; }
+.form-control-custom:focus { border-color:#8eaa68!important; box-shadow:0 0 0 3px rgba(168,214,94,.18)!important; }
+.form-label { color:var(--ink)!important; } .contact-email,.contact-email a { color:var(--muted); } .contact-email a:hover { color:var(--ink); }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+@media (max-width:767px) { .projects-section,.skills-section,.certifications-section,.contact-section { padding:78px 0; } }

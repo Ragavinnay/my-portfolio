@@ -2,102 +2,21 @@ import React, { useState } from 'react';
 import { Card, Button, Container, Row, Col, Modal } from 'react-bootstrap';
 import './Projects.css';
 
-// Your projects array with links to PDFs
-const projects = [
-  {
-    title: 'Smart Home Security System',
-    subtitle: 'ESP32-CAM & Ultrasonic Sensors',
-    description: 'A cost-effective, real-time home security solution integrating ESP32-CAM, servo motors, and ultrasonic sensors. The system dynamically detects motion from multiple directions, automatically orients the camera, and performs face detection with alerts sent via Telegram.',
-    technologies: ['ESP32', 'IoT', 'Python', 'Telegram API', 'Machine Learning'],
-    pdfLink: '/pdfs/Security camera pdf.pdf',
-    icon: '🔒',
-  },
-  {
-    title: 'Heart Disease Prediction System',
-    subtitle: 'Machine Learning & Python GUI',
-    description: 'An advanced healthcare predictive tool leveraging machine learning algorithms (Decision Tree, Random Forest, XGBoost) to accurately identify heart disease risk from patient health data. Features comprehensive data preprocessing and a user-friendly Tkinter GUI.',
-    technologies: ['Python', 'Machine Learning', 'XGBoost', 'Tkinter', 'Data Science'],
-    pdfLink: '/pdfs/Heart_disease.pdf',
-    icon: '❤️',
-  },
-];
+const projectsByProfile = {
+  core: [
+    { number: '01', title: 'Smart Solar EV Charging', subtitle: 'Dual-axis solar tracking · dual-battery switching · ESP32', period: 'FEB — MAY 2026', description: 'Designed and built an ESP32-based solar EV charging rover that combines four-LDR dual-axis tracking, relay-controlled dual-battery management, battery voltage monitoring, and a Wi-Fi web dashboard with rover controls. The system switches to a solar-charged auxiliary battery below a 6.5 V threshold to protect the main pack from deep discharge.', technologies: ['ESP32', '4-LDR tracking', 'Relay switching', 'IoT dashboard'], pdf: '/pdfs/smart-solar-ev-report.pdf' },
+    { number: '02', title: 'Wireless Charging for EVs', subtitle: 'Resonant inductive coupling · MATLAB/Simulink · hardware prototype', period: 'AUG — NOV 2025', description: 'Designed and demonstrated a contactless EV charging system using resonant magnetic power transfer. The work combines inverter-based high-frequency conversion, compensation networks, rectification, IR vehicle detection, Arduino relay control, LCD status feedback, and MATLAB/Simulink analysis of coil alignment and converter behavior.', technologies: ['MATLAB / Simulink', 'Arduino', 'IR sensing', 'Resonant WPT'], pdf: '/pdfs/wireless-ev-report.pdf' },
+  ],
+  software: [
+    { number: '01', title: 'TicketZero — AI Bug Triage Agent', subtitle: 'AI-powered Micro-SaaS · structured engineering tickets', period: 'MAR — MAY 2025', description: 'Built an AI-powered tool that converts vague client bug reports and screenshots into structured engineering tickets with severity, reproduction steps, and potential root causes. Added client-side Token Bucket rate limiting for API usage quotas.', technologies: ['Python', 'AI / ML', 'API design', 'Token Bucket'] },
+    { number: '02', title: 'Climate Forecasting with Machine Learning', subtitle: 'Feature engineering · model comparison · forecasting', period: 'FEB — MAY 2025', description: 'Built a temperature prediction system from historical climate data using feature engineering and dimensionality reduction. Compared Linear Regression, Decision Tree, Random Forest, and LSTM models, with Random Forest showing stable performance.', technologies: ['Python', 'Scikit-Learn', 'EDA', 'LSTM'] },
+    { number: '03', title: 'Brain Tumor Classification', subtitle: 'Deep CNNs · medical image analysis · comparative study', period: 'ACADEMIC PROJECT', description: 'Compared ResNet50, ResNet152, DenseNet121, and DenseNet201 for four-class MRI brain tumor classification: Glioma, Meningioma, Pituitary, and No Tumor. Evaluated data augmentation, early stopping, macro F1, accuracy, per-class metrics, confusion matrices, and training curves in a low-data regime.', technologies: ['Python', 'CNNs', 'ResNet', 'DenseNet'], pdf: '/reports/brain-tumor-classification-report.docx' },
+    { number: '04', title: 'Smart Home Security System', subtitle: 'ESP32-CAM · directional surveillance · Telegram alerts', period: 'FEB — MAY 2025', description: 'Built a modular, low-cost surveillance prototype using an ESP32-CAM, three HC-SR04 ultrasonic sensors, Arduino UNO, and servo-driven camera positioning. The system detects movement across left, center, and right zones, points the camera toward the source, performs face detection, and sends captured images through Telegram with minimal latency.', technologies: ['ESP32-CAM', 'Arduino UNO', 'HC-SR04', 'Telegram API'], pdf: '/pdfs/security-camera-report.pdf' },
+  ],
+};
 
-export default function Projects() {
-  const [showModal, setShowModal] = useState(false);
+export default function Projects({ profile }) {
   const [selectedPdf, setSelectedPdf] = useState('');
-
-  const handleViewClick = (pdfLink) => {
-    setSelectedPdf(pdfLink);
-    setShowModal(true);
-  };
-
-  const handleClose = () => {
-    setShowModal(false);
-    setSelectedPdf('');
-  };
-
-  return (
-    <Container className="projects-container">
-      <div className="projects-header text-center mb-5">
-        <h2 className="projects-title">My Projects</h2>
-        <p className="projects-subtitle">Exploring innovative solutions through embedded systems and machine learning</p>
-        <div className="title-underline"></div>
-      </div>
-      <Row className="g-4">
-        {projects.map((project, idx) => (
-          <Col key={idx} md={6} lg={6}>
-            <Card className="project-card h-100">
-              <Card.Body className="d-flex flex-column">
-                <div className="project-icon">{project.icon}</div>
-                <Card.Title className="project-card-title mt-3">{project.title}</Card.Title>
-                <Card.Subtitle className="project-card-subtitle mb-3">{project.subtitle}</Card.Subtitle>
-                <Card.Text className="project-description flex-grow-1">{project.description}</Card.Text>
-                <div className="tech-tags mb-3">
-                  {project.technologies.map((tech, techIdx) => (
-                    <span key={techIdx} className="tech-badge">{tech}</span>
-                  ))}
-                </div>
-                <Button 
-                  variant="primary" 
-                  className="project-btn"
-                  onClick={() => handleViewClick(project.pdfLink)}
-                >
-                  <span>View Project</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-
-      <Modal 
-        show={showModal} 
-        onHide={handleClose} 
-        size="lg" 
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-        className="project-modal"
-      >
-        <Modal.Header closeButton className="modal-header-custom">
-          <Modal.Title>Project Documentation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="modal-body-custom">
-          {selectedPdf ? (
-            <iframe
-              src={selectedPdf}
-              title="Project PDF"
-              width="100%"
-              height="100%"
-              style={{ border: 'none', minHeight: '70vh' }}
-            />
-          ) : (
-            <p>No PDF selected</p>
-          )}
-        </Modal.Body>
-      </Modal>
-    </Container>
-  );
+  const projects = projectsByProfile[profile];
+  return <Container className="projects-container"><div className="section-heading"><p className="section-eyebrow">02 — Selected work / {profile === 'software' ? 'Software & AI/ML' : 'Core ECE'}</p><h2 className="projects-title">Projects with a<br /><em>clear point of view.</em></h2><p className="projects-subtitle">Switch profiles above to explore the work most relevant to the opportunity in front of you.</p></div><Row className="g-4">{projects.map((project) => <Col key={project.number} lg={6}><Card className="project-card h-100"><Card.Body className="d-flex flex-column"><div className="project-topline"><span>{project.number}</span><span>{project.period}</span></div><Card.Title className="project-card-title">{project.title}</Card.Title><Card.Subtitle className="project-card-subtitle">{project.subtitle}</Card.Subtitle><Card.Text className="project-description flex-grow-1">{project.description}</Card.Text><div className="tech-tags">{project.technologies.map((tech) => <span key={tech} className="tech-badge">{tech}</span>)}</div><Button className="project-btn" onClick={() => setSelectedPdf(project.pdf || '/pdfs/resume.pdf')}>Read project <span>↗</span></Button></Card.Body></Card></Col>)}</Row><Modal show={Boolean(selectedPdf)} onHide={() => setSelectedPdf('')} size="lg" centered className="project-modal"><Modal.Header closeButton><Modal.Title>Project documentation</Modal.Title></Modal.Header><Modal.Body className="modal-body-custom">{selectedPdf && <iframe src={selectedPdf} title="Project documentation" width="100%" height="100%" style={{ border: 'none', minHeight: '70vh' }} />}</Modal.Body></Modal></Container>;
 }

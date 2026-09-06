@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -11,30 +11,22 @@ import Footer from './Footer';
 import MainApp from './Maincard';
 
 function App() {
+  const [profile, setProfile] = useState('software');
+
   return (
     <div className="app-container">
       <CustomNavbar />
-
       <section id="MainApp" className="main-section">
-        <MainApp/>
+        <MainApp profile={profile} onProfileChange={setProfile} />
       </section>
-
       <section id="projects" className="projects-section">
-        <Projects />
+        <Projects profile={profile} />
       </section>
-
       <section id="skills" className="skills-section">
-        <Skills />
+        <Skills profile={profile} />
       </section>
-
-      <section id="certifications" className="certifications-section">
-        <Certifications />
-      </section>
-
-      <section id="contact" className="contact-section">
-        <Contact />
-      </section>
-
+      <section id="certifications" className="certifications-section"><Certifications /></section>
+      <section id="contact" className="contact-section"><Contact /></section>
       <Footer />
     </div>
   );
