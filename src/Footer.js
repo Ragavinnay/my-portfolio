@@ -12,11 +12,6 @@ export default function Footer() {
               © {new Date().getFullYear()} <span className="footer-name">Raga Vinay</span>. All rights reserved.
             </p>
           </Col>
-          <Col md={6} className="text-center text-md-end">
-            <p className="footer-text mb-0">
-              Built with <span className="footer-heart">❤️</span> and React
-            </p>
-          </Col>
         </Row>
       </Container>
     </footer>
