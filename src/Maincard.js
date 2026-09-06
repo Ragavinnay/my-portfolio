@@ -5,86 +5,39 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 export default function MainApp() {
   const leftRef = useRef();
-  const midRef = useRef();
+  const middleRef = useRef();
   const rightRef = useRef();
-
+  const refs = [leftRef, middleRef, rightRef];
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       leftRef.current?.classList.add('visible');
-      midRef.current?.classList.add('visible');
+      middleRef.current?.classList.add('visible');
       rightRef.current?.classList.add('visible');
     }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <Container fluid className="main-hero-container">
       <Row className="h-100 g-0">
-        {/* Left: Background Image with Text */}
-        <Col md={4} className="bg-section fade-in" ref={leftRef}>
-          <div className="bg-overlay-content">
-            <p className="greeting-text mb-3">Hello, I am</p>
-            <h1 className="main-name display-3 fw-bold mb-3">
-              <span className="name-gradient">Raga Vinay</span>
-            </h1>
-            <h2 className="role-text fs-4 mb-4">
-              <span className="role-badge">IoT & Firmware Developer</span>
-            </h2>
-            <div className="tech-stack mt-4">
-              <span className="tech-tag">Embedded Systems</span>
-              <span className="tech-tag">IoT</span>
-              <span className="tech-tag">Python</span>
-              <span className="tech-tag">C++</span>
-            </div>
-            <div className="hero-actions mt-4">
-              <a
-                href="/pdfs/resume.pdf"
-                download
-                className="resume-btn"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <polyline points="7 10 12 15 17 10"/>
-                  <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Download Resume
-              </a>
-            </div>
-          </div>
-          <div className="bg-overlay"></div>
-        </Col>
-        
-        {/* Middle: Profile Image */}
-        <Col
-          md={4}
-          className="d-flex align-items-center justify-content-center profile-image-col fade-in"
-          ref={midRef}
-        >
-          <div className="profile-image-wrapper">
-            <div className="profile-image-glow"></div>
-            <img src={imgFluid} alt="Raga Vinay" className="profile-pic" />
+        <Col md={5} className="hero-copy fade-in" ref={refs[0]}>
+          <div className="hero-kicker"><span /> Available for meaningful projects</div>
+          <p className="greeting-text">Hello, I am</p>
+          <h1 className="main-name">Raga <em>Vinay</em></h1>
+          <p className="role-text">IoT &amp; Firmware Developer</p>
+          <p className="hero-intro">I build dependable connected systems where hardware, firmware, and intelligent software meet.</p>
+          <div className="tech-stack"><span>Embedded systems</span><span>IoT</span><span>Python</span><span>C++</span></div>
+          <div className="hero-actions">
+            <a href="#projects" className="hero-primary">Explore my work <span>↗</span></a>
+            <a href="/pdfs/resume.pdf" download className="resume-btn">Download resume <span>↓</span></a>
           </div>
         </Col>
-        
-        {/* Right: About Section */}
-        <Col
-          md={4}
-          className="d-flex flex-column justify-content-center about-section fade-in"
-          ref={rightRef}
-        >
-          <div className="about-content">
-            <h2 className="about-title mb-4">
-              <span className="title-icon">👋</span> About Me
-            </h2>
-            <p className="about-text">
-              I'm <strong>Raga Vinay Dewarsetty</strong>, an Electronics and Communication Engineering student with a passion for Embedded Systems, IoT, and intelligent automation. 
-            </p>
-            <p className="about-text">
-              I specialize in firmware development, real-time systems, and integrating hardware with software to create efficient, scalable solutions. With experience in Python, C++, and machine learning, I enjoy solving real-world problems through innovative system design.
-            </p>
-            <p className="about-text">
-              I'm driven by curiosity and always eager to learn and build impactful technology.
-            </p>
-          </div>
+        <Col md={3} className="profile-image-col fade-in" ref={refs[1]}>
+          <div className="profile-image-wrapper"><img src={imgFluid} alt="Portrait of Raga Vinay" className="profile-pic" /></div>
+          <span className="image-caption">ECE / builder / curious mind</span>
+        </Col>
+        <Col md={4} className="about-section fade-in" ref={refs[2]}>
+          <div className="about-content"><p className="section-eyebrow">01 — About</p><h2 className="about-title">Turning signals<br /><span>into solutions.</span></h2><p className="about-text">I&apos;m <strong>Raga Vinay Dewarsetty</strong>, an Electronics and Communication Engineering student focused on embedded systems, IoT, and intelligent automation.</p><p className="about-text">From real-time firmware to machine learning interfaces, I enjoy translating complex ideas into useful, reliable products.</p><div className="about-stats"><div><strong>06+</strong><span>core disciplines</span></div><div><strong>02</strong><span>featured builds</span></div></div></div>
         </Col>
       </Row>
     </Container>
