@@ -6,6 +6,9 @@
 .main-name { color:var(--ink); font-size:clamp(3.5rem,8vw,8rem); font-weight:800; letter-spacing:-.1em; line-height:.88; margin:12px 0 0; }
 .main-name em { color:#809c52; font-style:normal; }
 .role-text { color:var(--ink); font-size:clamp(1.2rem,2vw,1.6rem); font-weight:600; margin:32px 0 0; }
+.profile-switcher { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.5rem 0 2rem; }
+.profile-switcher button { border:1px solid var(--line); background:transparent; color:var(--muted); padding:.65rem .9rem; font:inherit; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; transition:180ms ease; }
+.profile-switcher button:hover,.profile-switcher button.active { border-color:var(--accent); color:var(--ink); background:var(--accent); }
 .hero-intro { color:var(--muted); font-size:1rem; line-height:1.8; margin:16px 0 0; max-width:470px; }
 .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:38px; }
 .hero-primary,.resume-btn { align-items:center; display:inline-flex; gap:22px; padding:15px 18px; text-decoration:none; font-size:.78rem; font-weight:800; }
