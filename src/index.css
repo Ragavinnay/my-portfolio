@@ -1,51 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-:root {
-  --ink: #f4f7f2;
-  --muted: #9aa59e;
-  --surface: #111815;
-  --surface-2: #17211d;
-  --line: rgba(244, 247, 242, 0.12);
-  --accent: #b8f36b;
-  --accent-ink: #0b110d;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: #0b110d; }
-body { margin: 0; background: #0b110d; color: var(--ink); font-family: 'Manrope', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-button, input, textarea { font: inherit; }
-a { color: inherit; }
-::selection { background: var(--accent); color: var(--accent-ink); }
-::-webkit-scrollbar { width: 9px; }
-::-webkit-scrollbar-track { background: #0b110d; }
-::-webkit-scrollbar-thumb { background: #34443a; border-radius: 9px; }
-code { font-family: 'DM Mono', monospace; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
-
-@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-.fade-in.visible { animation: rise .8s cubic-bezier(.2,.8,.2,1) both; }
-.fade-in { opacity: 1; }
-.app-container { overflow-x: hidden; background: #0b110d; }
-.main-section, .projects-section, .skills-section, .certifications-section, .contact-section { position: relative; }
-.projects-section, .certifications-section { background: var(--surface); }
-.skills-section, .contact-section { background: #0b110d; }
-.projects-section, .skills-section, .certifications-section, .contact-section { padding: 110px 0; }
-.projects-container, .skills-container, .contact-container { max-width: 1120px; }
-.projects-title, .skills-title, .contact-title { color: var(--ink); font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 800; letter-spacing: -.06em; margin-bottom: .8rem; }
-.projects-subtitle, .skills-subtitle, .contact-subtitle { color: var(--muted); font-size: 1.05rem; margin: 0 auto; max-width: 600px; }
-.title-underline { width: 48px; height: 3px; background: var(--accent); margin: 25px auto 0; }
-
-/* shared card overrides */
-.project-card, .skill-category-card, .contact-card { background: var(--surface-2) !important; border: 1px solid var(--line) !important; border-radius: 4px !important; box-shadow: none !important; color: var(--ink) !important; transition: transform .25s ease, border-color .25s ease; }
-.project-card:hover, .skill-category-card:hover { border-color: rgba(184,243,107,.55) !important; transform: translateY(-5px); }
-.project-card-title, .category-title { color: var(--ink) !important; }
-.project-card-subtitle, .project-description, .skill-name, .about-text { color: var(--muted) !important; }
-.tech-badge, .tech-tag { background: rgba(184,243,107,.08) !important; border: 1px solid rgba(184,243,107,.2) !important; border-radius: 2px !important; color: var(--accent) !important; }
-.project-btn, .contact-btn { background: var(--accent) !important; border: 0 !important; border-radius: 2px !important; color: var(--accent-ink) !important; font-weight: 800 !important; }
-.project-btn:hover, .contact-btn:hover { background: #d2ff9b !important; color: var(--accent-ink) !important; }
-.form-control-custom { background: #0b110d !important; border: 1px solid var(--line) !important; border-radius: 2px !important; color: var(--ink) !important; }
-.form-control-custom:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(184,243,107,.14) !important; }
-.form-label { color: var(--ink) !important; }
-.contact-email, .contact-email a { color: var(--muted); }
-.contact-email a:hover { color: var(--accent); }
-@media (max-width: 767px) { .projects-section, .skills-section, .certifications-section, .contact-section { padding: 78px 0; } }
+:root { --ink:#202522; --muted:#69736c; --paper:#f5f6f2; --surface:#ffffff; --line:#d8ddd7; --accent:#a8d65e; --accent-ink:#172016; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; background:var(--paper); }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:inherit; } button,input,textarea { font:inherit; } ::selection { background:var(--accent); color:var(--accent-ink); }
+.app-container { overflow-x:hidden; background:var(--paper); }
+.main-section,.projects-section,.skills-section,.certifications-section,.contact-section { position:relative; }
+.projects-section,.certifications-section { background:var(--surface); }
+.skills-section,.contact-section { background:var(--paper); }
+.projects-section,.skills-section,.certifications-section,.contact-section { padding:clamp(76px,10vw,144px) 0; }
+.projects-container,.skills-container,.certifications-container,.contact-container { max-width:1120px; }
+.section-heading { margin-bottom:56px; max-width:660px; }
+.section-eyebrow { color:var(--muted); font:500 .7rem/1.2 'DM Mono',monospace; letter-spacing:.1em; text-transform:uppercase; margin-bottom:22px; }
+.projects-title,.skills-title,.certifications-title,.contact-title { color:var(--ink); font-size:clamp(2.6rem,5vw,5.4rem); font-weight:800; letter-spacing:-.085em; line-height:.95; margin:0; }
+.projects-title em,.skills-title em,.certifications-title em { color:#809c52; font-style:normal; }
+.projects-subtitle,.skills-subtitle,.contact-subtitle { color:var(--muted); font-size:1rem; line-height:1.75; margin:28px 0 0; max-width:560px; }
+.title-underline { background:var(--accent); height:3px; margin:25px auto 0; width:48px; }
+.project-card,.skill-category-card,.contact-card { background:var(--surface)!important; border:1px solid var(--line)!important; border-radius:0!important; box-shadow:none!important; color:var(--ink)!important; transition:transform .25s ease,border-color .25s ease; }
+.project-card:hover,.skill-category-card:hover { border-color:#9dbb71!important; transform:translateY(-5px); }
+.project-card-title,.category-title { color:var(--ink)!important; } .project-card-subtitle,.project-description,.skill-name,.about-text { color:var(--muted)!important; }
+.tech-badge,.tech-tag { background:transparent!important; border:1px solid var(--line)!important; border-radius:0!important; color:var(--muted)!important; }
+.project-btn,.contact-btn { background:var(--ink)!important; border:0!important; border-radius:0!important; color:var(--paper)!important; font-weight:700!important; }
+.project-btn:hover,.contact-btn:hover { background:#536052!important; }
+.form-control-custom { background:var(--surface)!important; border:1px solid var(--line)!important; border-radius:0!important; color:var(--ink)!important; }
+.form-control-custom:focus { border-color:#8eaa68!important; box-shadow:0 0 0 3px rgba(168,214,94,.18)!important; }
+.form-label { color:var(--ink)!important; } .contact-email,.contact-email a { color:var(--muted); } .contact-email a:hover { color:var(--ink); }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+@media (max-width:767px) { .projects-section,.skills-section,.certifications-section,.contact-section { padding:78px 0; } }

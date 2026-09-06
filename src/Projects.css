@@ -1,14 +1,12 @@
-.projects-container { position: relative; }
-.projects-header, .skills-header, .contact-header { margin-bottom: 55px !important; }
-.project-card { min-height: 100%; }
-.project-card .card-body { padding: 32px; }
-.project-icon { color: var(--accent); font-size: 1.5rem; }
-.project-card-title { font-size: 1.55rem; font-weight: 800; letter-spacing: -.04em; }
-.project-card-subtitle { font: .7rem 'DM Mono', monospace; letter-spacing: .04em; text-transform: uppercase; }
-.project-description { font-size: .92rem; line-height: 1.75; }
-.tech-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-.tech-badge { font: .66rem 'DM Mono', monospace; padding: 6px 8px; }
-.project-btn { align-items: center; display: inline-flex; gap: 16px; justify-content: space-between; padding: 12px 15px; width: 100%; }
-.project-modal .modal-content { background: var(--surface-2); color: var(--ink); }
-.modal-header-custom { border-color: var(--line); }
-.modal-body-custom { padding: 0; }
+.projects-container { position:relative; }
+.project-card { min-height:430px; }
+.project-card .card-body { padding:30px; }
+.project-topline { border-bottom:1px solid var(--line); color:var(--muted); display:flex; font:500 .66rem 'DM Mono',monospace; justify-content:space-between; letter-spacing:.06em; margin-bottom:35px; padding-bottom:14px; text-transform:uppercase; }
+.project-card-title { font-size:1.55rem!important; font-weight:800; letter-spacing:-.055em; line-height:1.05; margin-bottom:10px!important; }
+.project-card-subtitle { font:500 .72rem 'DM Mono',monospace; letter-spacing:.03em; text-transform:uppercase; }
+.project-description { font-size:.9rem; line-height:1.75; margin:28px 0; }
+.tech-tags { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:26px; }
+.tech-badge { font:500 .65rem 'DM Mono',monospace; padding:7px 8px; }
+.project-btn { align-items:center; display:flex; justify-content:space-between; padding:13px 15px; width:100%; }
+.project-modal .modal-content { background:var(--surface); color:var(--ink); border-radius:0; }
+.project-modal .modal-header { border-color:var(--line); } .modal-body-custom { padding:0; }
